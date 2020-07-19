@@ -22,7 +22,7 @@
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
 <!--Nav-->
-@include('partials.nav')
+@include('partials.user')
 
 @yield('content')
 
