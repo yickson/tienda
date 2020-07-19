@@ -14,7 +14,7 @@
                 <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
                     <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Tienda</a></li>
                     <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Nosotros</a></li>
-                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route('contacto') }}">Contacto</a></li>
+                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Contacto</a></li>
                 </ul>
             </nav>
         </div>
