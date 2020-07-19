@@ -1,5 +1,5 @@
-<footer class="container mx-auto bg-white py-8 border-t border-gray-400">
-    <div class="container flex px-3 py-8 ">
+<footer class="w-full text-center p-4">
+    <div class="container mx-auto px-3 py-8 ">
         <div class="w-full mx-auto flex flex-wrap">
             <div class="flex w-full lg:w-1/2 ">
                 <div class="px-3 md:px-0">
