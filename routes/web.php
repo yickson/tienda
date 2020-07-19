@@ -33,3 +33,6 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
+Route::get('/contact', 'ContactController@index')->name('contacto');
+
+ 
