@@ -17,6 +17,8 @@ Route::get('/', 'MainController@index');
 
 Auth::routes();
 
+Route::get('logout', 'Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index')->name('home');
 //Rutas protegidas por autenticación
 Route::group(['middleware' => 'auth'], function() {
@@ -25,7 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/', 'DashboardController@index')->name('dashboard');
     });
 
-    Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
+    Route::group(['namespace' => 'User', 'prefix' => 'user', 'as' => 'user.'], function() {
         //Rutas del cliente
         Route::get('/', 'DashboardController@index');
     });
