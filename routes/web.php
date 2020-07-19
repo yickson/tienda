@@ -16,4 +16,8 @@ Route::get('/', 'MainController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Rutas protegidas por autenticación
+Route::group(['middleware' => 'auth'], function() {
+
+});
 
