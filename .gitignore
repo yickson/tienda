@@ -16,3 +16,7 @@ _ide_helper.php
 .idea
 .styleci.yml
 .editorconfig
+public/.DS_Store
+resources/.DS_Store
+resources/lang/.DS_Store
+.DS_Store
