@@ -36,5 +36,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-    //
+    protected $fillable = [
+        'provider_id',
+        'category_id',
+        'product_condition_id',
+        'active',
+        'name',
+        'reference',
+        'quantity',
+        'price',
+    ];
+
+    public function provider()
+    {
+        return $this->belongsTo('App\Provider');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function productCondition()
+    {
+        return $this->belongsTo('App\ProductCondition');
+    }
 }

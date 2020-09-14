@@ -22,5 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ProductCondition extends Model
 {
-    //
+    protected $fillable = [
+        'condition'
+    ];
 }
