@@ -37,28 +37,129 @@ class Cart
         $this->cartId = $this->generateCartId();
     }
 
-    public function addItems(Product $product)
+    public function formatItem(Product $product, int $quantity)
     {
-
+        return [
+            'productId' => $product->id,
+            'name' => $product->name,
+            'price' => $product->price,
+            'quantity' => $quantity,
+            'amount' => $quantity * $product->price
+        ];
     }
 
-    public function updateItems($productId)
+    public function addItem(Product $product, int $quantity)
     {
+       if (!empty($this->items)) {
+           if ($this->existsItem($product->id)) {
+               $this->updateItem($product, $quantity);
+               $this->getTotalItems();
+               $this->getTotalAmount();
+               return true;
+           }
+       }
 
+       $item = $this->formatItem($product, $quantity);
+       $this->getTotalItems();
+       $this->getTotalAmount();
+       array_push($this->items, $item);
+       return true;
     }
 
-    public function deleteItems($productId)
+    /**
+     * Update quantity and amount in product item
+     * @param Product $product
+     * @param int $quantity
+     * @return bool
+     */
+    public function updateItem(Product $product, int $quantity)
     {
-
+        foreach ($this->items as $key => &$item) {
+            if ($item['productId'] === $product->id) {
+                $item['quantity'] += $quantity;
+                if ($item['quantity'] <= 0) {
+                    $this->deleteItem($product->id);
+                    return true;
+                } else {
+                    $item['amount'] += $quantity * $product->price;
+                    return true;
+                }
+            }
+        }
     }
 
+    /**
+     * @param $productId
+     * @return bool
+     */
+    public function deleteItem($productId)
+    {
+        foreach ($this->items as $key => $item) {
+           if ($item['productId'] == $productId) {
+               $this->getTotalAmount();
+               $this->getTotalItems();
+               unset($this->items[$key]);
+           }
+        }
+
+        return true;
+    }
+
+    /**
+     * @return bool
+     * Delete all items of cart
+     */
     public function deleteAllItems()
     {
-
+        $this->items = [];
+        return true;
     }
 
+    /**
+     * Generate Unique Id Object Cart
+     * @return string
+     */
     public function generateCartId()
     {
         return md5(env('APP_KEY').uniqid('store'));
+    }
+
+    /**
+     * Total amount by each items
+     */
+    public function getTotalAmount()
+    {
+        $this->totalAmount = 0;
+        foreach ($this->items as $item) {
+            $this->totalAmount += $item['amount'];
+        }
+        return $this->totalAmount;
+    }
+
+    /**
+     * Total items by all products
+     */
+    public function getTotalItems()
+    {
+        $this->totalItems = 0;
+        foreach ($this->items as $item) {
+            $this->totalItems += $item['quantity'];
+        }
+    }
+
+    /**
+     * @param $productId
+     * @return bool
+     * Verify item in array of items
+     */
+    public function existsItem($productId)
+    {
+        foreach ($this->items as $item) {
+            if ($item['productId'] === $productId) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
