@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <script defer src="https://friconix.com/cdn/friconix.js"> </script>
+    <script defer src="{{asset('js/app.js')}}"></script>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         #menu-toggle:checked + #menu {
@@ -24,7 +25,9 @@
 <!--Nav-->
 @include('partials.nav')
 
-@yield('content')
+<div id="app">
+    @yield('content')
+</div>
 
 @include('partials.footer')
 

@@ -20,19 +20,21 @@ Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Rutas protegidas por autenticación
+//Auth routes
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['namespace' => 'Admin', 'middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function() {
-        //Rutas del administrador
+        //Admin routes
         Route::get('/', 'DashboardController@index')->name('dashboard');
     });
 
     Route::group(['namespace' => 'User', 'prefix' => 'user', 'as' => 'user.'], function() {
-        //Rutas del cliente
+        //Client routes
         Route::get('/', 'DashboardController@index');
     });
 });
-
+Route::get('/products', 'ProductController@index')->name('productos');
+Route::get('/list_product', 'ProductController@list_product');
+Route::post('add_product', 'ProductController@addProduct');
 Route::get('/contact', 'ContactController@index')->name('contacto');
 
  

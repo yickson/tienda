@@ -11,8 +11,6 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('admin-lte/plugins/chart.js/Chart.min');
-    require('admin-lte');
 } catch (e) {}
 
 /**

@@ -37,9 +37,14 @@
                     @endif
                 @endauth
             @endif
-            <a class="pl-3 inline-block no-underline hover:underline mx-2 text-gray-600" href="#">
-                <i class="fi-xwsuhl-shopping-cart-solid"></i>
-            </a>
+
+                <a href="#" role="button" class="relative flex pl-3 inline-block no-underline hover:underline mx-2 text-gray-600">
+                    <i class="fi-xwsuhx-shopping-cart-solid"></i>
+                    <span class="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                        0
+                    </span>
+                </a>
+
 
         </div>
     </div>
