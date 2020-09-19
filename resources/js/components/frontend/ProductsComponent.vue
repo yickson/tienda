@@ -1,8 +1,11 @@
 <template>
     <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4" v-for="product in products">
-            <ProductComponent :product="product"></ProductComponent>
-        </div>
+        <ProductComponent
+            v-for="product in products"
+            :key="product.id"
+            :product="product"
+        >
+        </ProductComponent>
     </div>
 </template>
 

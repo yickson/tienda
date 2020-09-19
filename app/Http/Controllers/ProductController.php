@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function list_product()
     {
-        $product = Product::where('active', 1)->get();
+        $product = Product::where('active', 1)->take(9)->get();
         return response()->json($product);
     }
 

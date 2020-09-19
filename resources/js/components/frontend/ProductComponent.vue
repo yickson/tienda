@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="col-lg-4 col-md-6 mb-4">
         <b-card
             :title="product.name"
             :img-src="product.image"
             img-alt="Image"
             img-top
-            tag="product"
+            tag="article"
             style="max-width: 20rem;"
             class="mb-2"
         >
