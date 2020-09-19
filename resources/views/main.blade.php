@@ -7,26 +7,24 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Mi tienda') }}</title>
-
     <!-- Styles -->
-    <script defer src="https://friconix.com/cdn/friconix.js"> </script>
     <script defer src="{{asset('js/app.js')}}"></script>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <style>
-        #menu-toggle:checked + #menu {
-            display: block;
-        }
-    </style>
 </head>
-<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
-
+<style>
+    body {
+        padding-top: 70px;
+    }
+</style>
+<body>
 <!--Nav-->
 @include('partials.nav')
 
-<div id="app">
-    @yield('content')
+<div class="container">
+    <div id="app">
+        @yield('content')
+    </div>
 </div>
 
 @include('partials.footer')

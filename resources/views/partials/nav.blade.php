@@ -1,51 +1,43 @@
-<nav id="header" class="w-full z-30 top-0 py-1">
-    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
-
-        <label for="menu-toggle" class="cursor-pointer md:hidden block">
-            <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                <title>menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-            </svg>
-        </label>
-        <input class="hidden" type="checkbox" id="menu-toggle" />
-
-        <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-            <nav>
-                <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Tienda</a></li>
-                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Nosotros</a></li>
-                    <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="{{ route("contacto") }}">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="order-1 md:order-2">
-            <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-                <i class="fi-xnsuxl-label-solid"></i>
-                Mi Tienda
-            </a>
-        </div>
-
-        <div class="order-2 md:order-3 flex items-center" id="nav-content">
-            @if(Route::has('login'))
-                @auth
-                    <a href="{{ url('/home') }}" class="inline-block no-underline hover:underline mx-2 text-gray-600"><i class="fi-xnsuxl-house-solid"></i></a>
-                @else
-                    <a href="{{ route('login') }}" class="inline-block no-underline hover:underline mx-2 text-gray-600"><i class="fi-xwsdxl-sign-in-solid"></i></a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="inline-block no-underline hover:underline mx-2 text-gray-600"><i class="fi-xnsuxl-user-plus-solid"></i></a>
-                    @endif
-                @endauth
-            @endif
-
-                <a href="#" role="button" class="relative flex pl-3 inline-block no-underline hover:underline mx-2 text-gray-600">
-                    <i class="fi-xwsuhx-shopping-cart-solid"></i>
-                    <span class="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-                        0
-                    </span>
-                </a>
-
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Mi tienda</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                @if(Route::has('login'))
+                    @auth
+                        <li class="nav-item">
+                            <a href="{{ url('/home') }}" class="nav-link">
+                                Inicio
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">
+                                Cuenta <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a href="{{ route('register') }}" class="nav-link">
+                                    Registro <i class="fas fa-user-plus"></i>
+                                </a>
+                            </li>
+                        @endif
+                    @endauth
+                @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Carro <i class="fas fa-shopping-cart"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
