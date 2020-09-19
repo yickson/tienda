@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/products', 'ProductController@index')->name('productos');
 Route::get('/list_product', 'ProductController@list_product');
 Route::post('add_product', 'ProductController@addProduct');
+Route::get('cartProduct', 'ProductController@cartProduct');
 Route::get('/contact', 'ContactController@index')->name('contacto');
 
  

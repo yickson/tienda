@@ -14,6 +14,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'product_condition_id' => $faker->numberBetween(1, 3),
         'active' => $faker->boolean,
         'name' => $faker->productName,
+        'description' => $faker->sentence(),
+        'image' => $faker->imageUrl(700, 400),
         'reference' => $faker->randomNumber(4),
         'quantity' => $faker->numberBetween(10, 1000),
         'price' => $faker->numberBetween(100, 2000),

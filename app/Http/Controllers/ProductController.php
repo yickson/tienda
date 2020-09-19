@@ -15,12 +15,13 @@ class ProductController extends Controller
 
     public function list_product()
     {
-        $product = Product::all();
+        $product = Product::where('active', 1)->get();
         return response()->json($product);
     }
 
     public function addProduct(Request $request)
     {
+        //dd($request->all());
         $product = Product::find($request->product);
         $quantity = $request->quantity;
 
@@ -31,6 +32,12 @@ class ProductController extends Controller
         }
         $cart->addItem($product, $quantity);
         session(['cart' => $cart]);
+        return response()->json($cart);
+    }
+
+    public function cartProduct()
+    {
+        $cart = session('cart');
         return response()->json($cart);
     }
 }

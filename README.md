@@ -1,6 +1,6 @@
-## Tienda en Laravel con TailwindCSS
+## Tienda en Laravel con Bootstrap-vue
 
-Es una tienda simple realizada con Tailwind y algunos componentes en VueJS
+Es una tienda simple realizada con Bootstrap-vue y algunos componentes en VueJS
 
 La estructura de la base de datos esta estructurada de la siguiente forma:
 

@@ -60,9 +60,9 @@ class Cart
        }
 
        $item = $this->formatItem($product, $quantity);
+       array_push($this->items, $item);
        $this->getTotalItems();
        $this->getTotalAmount();
-       array_push($this->items, $item);
        return true;
     }
 
