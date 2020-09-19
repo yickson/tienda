@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function list_product()
     {
-        $product = Product::find(3);
+        $product = Product::all();
         return response()->json($product);
     }
 

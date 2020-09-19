@@ -15,14 +15,12 @@
 </head>
 <body>
 <!--Nav-->
-@include('partials.nav')
-
-<div class="container">
-    <div id="app">
+<div id="app">
+    @include('partials.nav')
+    <div class="container">
         @yield('content')
     </div>
 </div>
-
 @include('partials.footer')
 
 </body>
