@@ -30,8 +30,8 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Carro <i class="fas fa-shopping-cart"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge badge-pill badge-primary badge-notify">12</span>
                     </a>
                 </li>
                 <li class="nav-item">

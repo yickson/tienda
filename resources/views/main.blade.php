@@ -11,12 +11,8 @@
     <!-- Styles -->
     <script defer src="{{asset('js/app.js')}}"></script>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
-<style>
-    body {
-        padding-top: 70px;
-    }
-</style>
 <body>
 <!--Nav-->
 @include('partials.nav')
