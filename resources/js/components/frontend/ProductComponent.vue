@@ -26,7 +26,8 @@
             <b-button @click="addProduct(product.id)" v-b-tooltip.hover title="Agregar producto" variant="primary">
                 <i class="fas fa-cart-arrow-down"></i>
             </b-button>
-            <b-button @click="seeProduct(product)" v-b-tooltip.hover title="Ver producto" variant="primary">
+            <b-link href=""></b-link>
+            <b-button @click="seeProduct(product.id)" v-b-tooltip.hover title="Ver producto" variant="primary">
                 <i class="far fa-eye"></i>
             </b-button>
         </b-card>
@@ -56,7 +57,7 @@ export default {
                 }).catch(err => console.log(err));
         },
         seeProduct(product) {
-            window.location.href = ''
+            window.location.href = window.location + `product/${product}`;
         }
     }
 }

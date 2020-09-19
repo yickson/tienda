@@ -10,7 +10,18 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('frontend.product');
+        return view('frontend.products');
+    }
+
+    public function show($product_id)
+    {
+        return view('frontend.product', ['product' => $product_id]);
+    }
+
+    public function getProduct($product_id)
+    {
+        $product = Product::find($product_id);
+        return response()->json($product);
     }
 
     public function list_product()
@@ -21,7 +32,6 @@ class ProductController extends Controller
 
     public function addProduct(Request $request)
     {
-        //dd($request->all());
         $product = Product::find($request->product);
         $quantity = $request->quantity;
 

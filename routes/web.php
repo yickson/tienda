@@ -33,7 +33,10 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 Route::get('/products', 'ProductController@index')->name('productos');
+Route::get('/product/{id}', 'ProductController@show')->name('producto');
+
 Route::get('/list_product', 'ProductController@list_product');
+Route::get('/get_product/{id}', 'ProductController@getProduct');
 Route::post('add_product', 'ProductController@addProduct');
 Route::get('cartProduct', 'ProductController@cartProduct');
 Route::get('/contact', 'ContactController@index')->name('contacto');

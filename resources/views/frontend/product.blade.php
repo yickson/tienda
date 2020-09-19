@@ -1,5 +1,5 @@
 @extends('main')
 
 @section('content')
-    <example-component></example-component>
+    <product-description-component :product_id='@json($product)'></product-description-component>
 @endsection
