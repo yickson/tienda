@@ -29,7 +29,7 @@
                     @endauth
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('carro') }}">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge badge-pill badge-primary badge-notify">12</span>
                     </a>

@@ -152,14 +152,15 @@ class Cart
      * @return bool
      * Verify item in array of items
      */
-    public function existsItem($productId)
+    public function existsItem(int $productId)
     {
         foreach ($this->items as $item) {
-            if ($item['productId'] === $productId) {
+            print_r($item['productId'], $productId);
+            if ($item['productId'] == $productId) {
                 return true;
-            } else {
-                return false;
             }
         }
+
+        return false;
     }
 }

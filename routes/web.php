@@ -39,6 +39,11 @@ Route::get('/list_product', 'ProductController@list_product');
 Route::get('/get_product/{id}', 'ProductController@getProduct');
 Route::post('add_product', 'ProductController@addProduct');
 Route::get('cartProduct', 'ProductController@cartProduct');
+
+Route::get('cart', 'CartController@index')->name('carro');
+Route::get('getCart', 'CartController@show');
+Route::post('updateCart', 'CartController@update');
+Route::get('emptyCart', 'CartController@delete');
 Route::get('/contact', 'ContactController@index')->name('contacto');
 
  
