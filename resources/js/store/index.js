@@ -1,38 +1,23 @@
 export default {
     state: {
-        products: [
-            {
-                productId: 5,
-                name: "Durable Marble Pants",
-                price: 384,
-                quantity: 2,
-                amount: 768
-            }
-        ],
-        StoreCart: [],
+        quantity: 0,
     },
-    getters: {
-        products: (state) => state.products,
-        StoreCart: (state) => state.StoreCart,
-    },
-
     mutations: {
-        ADD_Item(state, id) {
-            state.StoreCart.push(id);
-        },
-
-        REMOVE_Item(state, index) {
-            state.StoreCart.splice(index, 1);
-        },
+        MODIFY_QUANTITY(state, quantity) {
+            state.quantity = quantity;
+        }
     },
     actions: {
-
-        addItem(context, id) {
-            context.commit("ADD_Item", id);
+        modifyQuantity(context, quantity) {
+            context.commit("MODIFY_QUANTITY", quantity)
         },
-
-        removeItem(context, index) {
-            context.commit("REMOVE_Item", index);
-        },
+        getCart(context) {
+            axios.get('/getCart')
+                .then(response => {
+                    const {totalItems} = response.data
+                    context.commit("MODIFY_QUANTITY", totalItems)
+                })
+                .catch( err => console.log(err))
+        }
     }
 }

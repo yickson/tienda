@@ -16,7 +16,7 @@
 <body>
 <!--Nav-->
 <div id="app">
-    @include('partials.nav')
+    @include('partials.nav-old')
     <div class="container">
         @yield('content')
     </div>

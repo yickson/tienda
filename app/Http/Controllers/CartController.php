@@ -21,19 +21,21 @@ class CartController extends Controller
 
     public function update(Request $request)
     {
-        $product = Product::find($request->productId);
+        $product = Product::select(['id', 'name', 'price'])->find($request->productId);
         $quantity = $request->quantity;
         $cart = $this->verifyCart();
         $cart->addItem($product, $quantity);
         session(['cart' => $cart]);
 
-        return response()->json($cart);
+        return response()->json(['response' => true,  'cart' => $cart]);
     }
 
     public function delete()
     {
         $cart = $this->verifyCart();
         $cart->deleteAllItems();
+        session(['cart' => $cart]);
+
         return response()->json(true);
     }
 

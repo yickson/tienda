@@ -2,7 +2,7 @@
     <div class="col-lg-4 col-md-6 mb-4">
         <b-card
             :title="product.name"
-            :img-src="product.image"
+            img-src="http://placehold.jp/700x400.png"
             img-alt="Image"
             img-top
             tag="article"
@@ -31,6 +31,7 @@
                 <i class="far fa-eye"></i>
             </b-button>
         </b-card>
+        <notifications group="products" />
     </div>
 </template>
 
@@ -51,9 +52,15 @@ export default {
             this.quantity > 1 ? this.quantity-- : this.quantity;
         },
         addProduct(product) {
-            axios.post('add_product', {'product': product, 'quantity': this.quantity})
+            axios.post('updateCart', {'productId': product, 'quantity': this.quantity})
                 .then(result => {
-                    console.log(result.data);
+                    const {totalItems} = result.data.cart
+                    this.$store.dispatch('modifyQuantity', totalItems)
+                    this.$notify({
+                        group: 'products',
+                        title: 'Producto',
+                        text: '¡Ha sido agregado exitosamente!'
+                    });
                 }).catch(err => console.log(err));
         },
         seeProduct(product) {

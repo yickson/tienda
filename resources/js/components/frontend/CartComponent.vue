@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card bg-variant="light" header="Carro de compra" class="text-center">
+        <b-card v-if="items.length > 0" bg-variant="light" header="Carro de compra" class="text-center">
             <b-table
                 striped
                 bordered
@@ -18,8 +18,13 @@
                 </template>
             </b-table>
             <b-button @click="emptyCart" variant="danger">
-                Vaciar carro <i class="fas fa-trash"></i>
+                <i class="fas fa-trash"></i>
             </b-button>
+        </b-card>
+        <b-card v-else bg-variant="light" header="Carro de compra" class="text-center">
+            <b-card-text>
+                No tienes ningún producto agregado al carro
+            </b-card-text>
         </b-card>
     </div>
 </template>
@@ -27,7 +32,7 @@
 <script>
 export default {
     name: "CartComponent",
-    mounted() {
+    created() {
         this.getCart()
     },
     data() {
@@ -59,11 +64,15 @@ export default {
         updateCart(productId, quantity) {
             axios.post('updateCart', {'productId': productId, 'quantity': quantity})
                 .then(result => {
-                    const {items, totalAmount, totalItems} = result.data
-                    this.items = items
-                    this.totalAmount = totalAmount
-                    this.totalItems = totalItems
-                    this.$refs.cart.refresh()
+                    if (result.data.response) {
+                        const {items, totalAmount, totalItems} = result.data.cart
+                        this.$store.dispatch('modifyQuantity', totalItems)
+                        this.items = items
+                        this.totalAmount = totalAmount
+                        this.totalItems = totalItems
+
+                        this.$refs.cart.refresh()
+                    }
                 })
                 .catch( err => console.log(err))
         },
@@ -71,6 +80,7 @@ export default {
             axios.get('emptyCart')
                 .then(result => {
                     if (result.data) {
+                        this.$store.dispatch('modifyQuantity', 0)
                         this.items = []
                     }
                 })
