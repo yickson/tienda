@@ -2,20 +2,13 @@
     <div class="col-lg-4 col-md-6 mb-4">
         <b-card
             :title="product.name"
-            img-src="http://placehold.jp/700x400.png"
-            img-alt="Image"
-            img-top
             tag="article"
             style="max-width: 20rem;"
             class="mb-2"
         >
+            <b-card-img-lazy :src="product.image" top class="mb-3"></b-card-img-lazy>
             <b-card-text>
-                <p>
-                    {{ product.description }}
-                </p>
-                <p>
-                    Precio: ${{ product.price }}
-                </p>
+                <p>Precio: ${{ product.price }}</p>
             </b-card-text>
 
             <b-button-group>
@@ -26,10 +19,9 @@
             <b-button @click="addProduct(product.id)" v-b-tooltip.hover title="Agregar producto" variant="primary">
                 <i class="fas fa-cart-arrow-down"></i>
             </b-button>
-            <b-link href=""></b-link>
-            <b-button @click="seeProduct(product.id)" v-b-tooltip.hover title="Ver producto" variant="primary">
+            <b-link class="btn btn-primary" :href="'/product/' + product.id" v-b-tooltip.hover title="Ver producto">
                 <i class="far fa-eye"></i>
-            </b-button>
+            </b-link>
         </b-card>
         <notifications group="products" />
     </div>
@@ -62,9 +54,6 @@ export default {
                         text: '¡Ha sido agregado exitosamente!'
                     });
                 }).catch(err => console.log(err));
-        },
-        seeProduct(product) {
-            window.location.href = window.location + `product/${product}`;
         }
     }
 }

@@ -16,6 +16,7 @@ store.dispatch('getCart');
  */
 import {BootstrapVue} from "bootstrap-vue";
 import Notifications from "vue-notification";
+import VueLazyload from "vue-lazyload";
 
 /**
  * Components Frontend
@@ -34,6 +35,7 @@ Vue.component('cart-component', CartComponent);
 
 Vue.use(BootstrapVue);
 Vue.use(Notifications);
+Vue.use(VueLazyload);
 
 const app = new Vue({
     el: '#app',

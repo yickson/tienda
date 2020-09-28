@@ -10,19 +10,6 @@
 <script>
 export default {
     name: "CartIconComponent",
-    created() {
-
-    },
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-        setCart() {
-            axios
-        }
-    },
     computed: {
         quantity() {
             return this.$store.state.quantity
