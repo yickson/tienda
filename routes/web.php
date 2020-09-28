@@ -44,6 +44,11 @@ Route::get('cart', 'CartController@index')->name('carro');
 Route::get('getCart', 'CartController@show');
 Route::post('updateCart', 'CartController@update');
 Route::get('emptyCart', 'CartController@delete');
+
+Route::get('payment', 'CartController@payCart');
+Route::get('transaction', 'CartController@transaction');
+Route::post('paymentFinal', 'CartController@paymentFinal');
+
 Route::get('/contact', 'ContactController@index')->name('contacto');
 
  

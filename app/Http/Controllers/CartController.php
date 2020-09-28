@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Libs\Cart;
+use App\Libs\MyWebpay;
 use App\Product;
 use Illuminate\Http\Request;
+use Transbank\Webpay\Exceptions\InvalidAmountException;
 
 class CartController extends Controller
 {
@@ -51,5 +53,37 @@ class CartController extends Controller
         }
 
         return $cart;
+    }
+
+    public function payCart()
+    {
+        $transaction = MyWebpay::getTransaction();
+
+        $amount = 1000;
+        // Identificador que será retornado en el callback de resultado:
+        $sessionId = "ABCDEF";
+        // Identificador único de orden de compra:
+        $buyOrder = strval(rand(100000, 999999999));
+        $returnUrl = "http://tienda.test:8091/transaction";
+        $finalUrl = "http://tienda.test:8091/paymentFinal";
+        try {
+            $initResult = $transaction->initTransaction($amount, $buyOrder, $sessionId, $returnUrl, $finalUrl);
+            $formAction = $initResult->url;
+            $tokenWs = $initResult->token;
+            return view('frontend.transaction', ['tokenWs' => $tokenWs, 'formAction' => $formAction]);
+        } catch (InvalidAmountException $e) {
+            return response()->json(['message' => 'Monto inválido', 'error' => $e->getMessage()]);
+        }
+    }
+
+    public function transaction(Request $request)
+    {
+        dd($request->all());
+        //return view('frontend.transaction');
+    }
+
+    public function paymentFinal()
+    {
+
     }
 }

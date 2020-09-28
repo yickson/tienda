@@ -17,9 +17,18 @@
                     </b-button-group>
                 </template>
             </b-table>
-            <b-button @click="emptyCart" variant="danger">
-                <i class="fas fa-trash"></i>
-            </b-button>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <b-button @click="emptyCart" variant="danger">
+                        Vaciar <i class="fas fa-trash"></i>
+                    </b-button>
+                </div>
+                <div class="col-6">
+                    <b-link class="btn btn-primary" href="/payment">
+                        Pagar <i class="fas fa-money-bill-wave"></i>
+                    </b-link>
+                </div>
+            </div>
         </b-card>
         <b-card v-else bg-variant="light" header="Carro de compra" class="text-center">
             <b-card-text>
